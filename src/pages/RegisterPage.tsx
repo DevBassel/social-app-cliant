@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { z } from "zod";
 import { IRegisterUser } from "../api/types/auth.interface";
 import useRegister from "../hooks/api/auth/useRegister";
+import { LoginWithGoogle } from "../api/auth-calls";
 
 export default function RegisterPage() {
   const { RegisterMutate } = useRegister();
@@ -116,7 +117,7 @@ export default function RegisterPage() {
           <AbsoluteCenter className="bg-mainDark font-black">OR</AbsoluteCenter>
         </Box>
 
-        <Button variant={"outline"}>
+        <Button onClick={LoginWithGoogle} variant={"outline"}>
           <Icon as={FcGoogle} className="!text-2xl" mr={2} /> with google
         </Button>
 
