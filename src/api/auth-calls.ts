@@ -3,7 +3,7 @@ import {
   IForgetPassword,
   ILoginUset,
   IRegisterUser,
-} from "./types/auth.interface";
+} from "../types/auth.interface";
 
 export async function registerNewUser(data: IRegisterUser) {
   const response = await axiosClient.post("/auth/register", data);
@@ -29,4 +29,10 @@ export async function LoginWithGoogle() {
   } catch (error) {
     console.log(error);
   }
+}
+
+export function logOut() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("profile");
+  localStorage.removeItem("active-chate");
 }

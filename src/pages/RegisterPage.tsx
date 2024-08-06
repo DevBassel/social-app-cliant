@@ -15,12 +15,13 @@ import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { IRegisterUser } from "../api/types/auth.interface";
+import { IRegisterUser } from "../types/auth.interface";
 import useRegister from "../hooks/api/auth/useRegister";
 import { LoginWithGoogle } from "../api/auth-calls";
 
 export default function RegisterPage() {
   const { RegisterMutate } = useRegister();
+
   const schema = z.object({
     email: z.string().email(),
     first_name: z.string().min(2, { message: "Invalid  name" }),

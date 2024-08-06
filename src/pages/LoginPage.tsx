@@ -17,11 +17,12 @@ import { Link } from "react-router-dom";
 import { z } from "zod";
 import ForgetPassModel from "../components/models/ForgetPass.model";
 import { LoginWithGoogle } from "../api/auth-calls";
-import { ILoginUset } from "../api/types/auth.interface";
+import { ILoginUset } from "../types/auth.interface";
 import useLogin from "../hooks/api/auth/useLogin";
 
 export default function LoginPage() {
-  const { LoginMutate, status } = useLogin();
+  const { LoginMutate } = useLogin();
+
   const schema = z.object({
     email: z.string().email({ message: "Email Not Valid" }),
     password: z
@@ -38,7 +39,6 @@ export default function LoginPage() {
     resolver: zodResolver(schema),
   });
   function submit(data: unknown) {
-    console.log(status);
     LoginMutate(data as ILoginUset);
   }
 

@@ -1,7 +1,9 @@
 import axios from "axios";
+import { getToken } from "../utils/getToken";
+import { APIURL } from "../utils/API.url";
 
 export const axiosClient = axios.create({
-  baseURL: "http://localhost:4000/api/v1",
+  baseURL: `${APIURL}/api/v1`,
   timeout: 10000, // Set timeout to 10 seconds
   headers: {
     "Content-Type": "application/json",
@@ -11,7 +13,7 @@ export const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = getToken();
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

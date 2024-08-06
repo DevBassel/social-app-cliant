@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, useSearchParams } from "react-router-dom";
 
 export default function GoogleCallBack() {
@@ -7,5 +6,5 @@ export default function GoogleCallBack() {
     localStorage.setItem("token", searchParams.get("token")!);
   }
 
-  return <Navigate to={"/"} />;
+  return <Navigate to={"/profile"} />;
 }
